@@ -18,7 +18,7 @@ urlpatterns = [
     path('certificado/<int:pk>', views.CertificadoDetailView.as_view(), name='certificado_detail'),
 
     # Url para contacto
-    path('contacto', views.InfoListView.as_view(), name='info'),
+    path('info', views.InfoListView.as_view(), name='info'),
 
     # Url para Login
     path('login', views.UserLoginView.as_view(), name='login'),
