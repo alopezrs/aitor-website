@@ -9,10 +9,7 @@
     <title>Aitor | {{ titulo_ventana }}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/animacion_menu.js' %}" defer></script>
-    <script src="{% static 'js/pdf_viewer.js' %}" defer></script>
-    <script src="{% static 'js/ocultar_pass.js' %}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </head>
 <body>
     <div class="header-container">
@@ -23,7 +20,7 @@
                 <span class="bar"></span>
             </button>
             <div id="hizq">
-                <h1 id="titulo-principal"><a href="{% url 'index' %}">Portfolio</a></h1>
+                <h1 id="titulo-principal"><a href="{% url 'index' %}">Vacaiones</a></h1>
             </div>
             <div id="hder">
                 <h2 id="titulo-secundario">{{ titulo_pagina }}</h2>
@@ -31,29 +28,13 @@
         </header>
         <nav id="main-menu" class="menu">
             <h2 class="ocultar"></h2>
-            <h2 class="inline-element"><a href="{% url 'index' %}">Home</a></h2>
+            <h2 class="inline-element"><a href="{% url 'indexVacaciones' %}">Home</a></h2>
             <h1 class="inline-element ocultar">|</h1>
-            <h2 class="inline-element"><a href="{% url 'info' %}">Sobre Mí</a></h2>
+            <h2 class="inline-element "><a href="{% url 'experiencia' %}">Saldo</a></h2>
             <h1 class="inline-element ocultar">|</h1>
-            <h2 class="inline-element "><a href="{% url 'experiencia' %}">Expriencia</a></h2>
+            <h2 class="inline-element"><a href="{% url 'educacion' %}">Crear Solicitud</a></h2>
             <h1 class="inline-element ocultar">|</h1>
-            <h2 class="inline-element"><a href="{% url 'educacion' %}">Educación</a></h2>
-            <h1 class="inline-element ocultar">|</h1>
-            <h2 class="inline-element"><a href="{% url 'certificado' %}">Certificados</a></h2>
-            <!--<h1 class="inline-element ocultar">|</h1>
-            <h2 class="inline-element">
-                {% if request.user.is_authenticated %}
-                    <a href="{% url 'logout' %}">
-                    <img class="login-logout" src="{% static 'images/logout.png' %}">
-                    {{ logged_user }}
-                </a>
-                {% else %}
-                    <a href="{% url 'login' %}">
-                    <img class="login-logout" src="{% static 'images/login.png' %}">
-                    {{ logged_user }}
-                </a>
-                {% endif %}
-            </h2>-->
+            <h2 class="inline-element"><a href="{% url 'certificado' %}">Ver Solicitudes</a></h2>
             <h2 id="menu-final"></h2>
         </nav>
     </div>

@@ -1,7 +1,10 @@
 from appWeb.models import anio_inicio
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
+from django.views import View
 from django.views.generic import DetailView, ListView
 from django.http import HttpResponse
 from .models import Experiencia, Educacion, Certificado, Contacto, Usuario
@@ -152,20 +155,38 @@ class CertificadoDetailView(DetailView):
         return context
 
 # Vista para contactar con el desarrollador
-class ContactoListView(ListView):
+class InfoListView(ListView):
+    model = Contacto
+    template_name = 'info.html'
+    queryset = Contacto.objects.order_by('id')
+    context_object_name = 'lista_info'
+
+    def get_context_data(self, **kwargs):
+        context = super(InfoListView, self).get_context_data(**kwargs)
+        context['titulo_ventana'] = 'Sobre Mí'
+        context['titulo_pagina'] = 'Sobre Mí'
+        return context
+
+
+# Pruebas de permisos
+# Vista para contactar con el desarrollador
+"""class ContactoListView(PermissionRequiredMixin, ListView):
     model = Contacto
     template_name = 'contacto.html'
     queryset = Contacto.objects.order_by('id')
     context_object_name = 'lista_contacto'
 
+    # Requerimos el permiso para ver contactos
+    permission_required = 'appWeb.view_contacto'
+
     def get_context_data(self, **kwargs):
         context = super(ContactoListView, self).get_context_data(**kwargs)
         context['titulo_ventana'] = 'Contacto'
         context['titulo_pagina'] = 'Contacto'
-        return context
+        return context"""
 
 
-# Vista para logearse
+# Vista para iniciar sesion
 class UserLoginView(LoginView):
     model = Usuario
     template_name = 'login.html'
@@ -187,3 +208,15 @@ class UserLoginView(LoginView):
         context['titulo_pagina'] = 'Mi Cuenta'
 
         return redirect('index')
+
+
+# Vista para cerrar sesion
+class LogoutView(View):
+
+    def get(self, request):
+        logout(request)
+        return redirect('login')
+
+    def post(self, request):
+        logout(request)
+        return redirect('login')

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'appWeb'
+    'appWeb',
+    'appVacaciones',
 ]
 
 MIDDLEWARE = [
@@ -145,4 +146,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Redirección tras login o logout
 LOGIN_REDIRECT_URL = reverse_lazy('index')
-LOGOUT_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('login')
