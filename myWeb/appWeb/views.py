@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 from django.http import HttpResponse
 from .models import Experiencia, Educacion, Certificado, Contacto, Usuario
 from django.db.models import Case, When, Value, BooleanField
@@ -49,8 +49,8 @@ class ExperienciaListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ExperienciaListView, self).get_context_data(**kwargs)
-        context['titulo_ventana'] = 'Experiencia'
-        context['titulo_pagina'] = 'Experiencia'
+        context['titulo_ventana'] = 'Trayectoria'
+        context['titulo_pagina'] = 'Trayectoria'
 
         for experiencia in context['lista_experiencia']:
             if experiencia.mes_inicio:
@@ -88,8 +88,8 @@ class EducacionListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(EducacionListView, self).get_context_data(**kwargs)
-        context['titulo_ventana'] = 'Educación'
-        context['titulo_pagina'] = 'Educación'
+        context['titulo_ventana'] = 'Formación'
+        context['titulo_pagina'] = 'Formación'
 
         for educacion in context['lista_educacion']:
             if educacion.mes_inicio:
@@ -220,3 +220,24 @@ class LogoutView(View):
     def post(self, request):
         logout(request)
         return redirect('login')
+
+
+# Vista para error 404
+class Error404View(TemplateView):
+    template_name = "404.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo_ventana'] = 'Error 404'
+        context['titulo_pagina'] = 'Error 404'
+        context['path'] = self.request.path
+        return context
+
+    def render_to_response(self, context, **response_kwargs):
+        response = super().render_to_response(context, **response_kwargs)
+        response.status_code = 404
+        return response
+
+# Django espera funcion para Error 404, llama a la clase que tiene la vista
+def error_404_handler(request, exception):
+    return Error404View.as_view()(request)

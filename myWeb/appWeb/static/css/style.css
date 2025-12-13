@@ -426,6 +426,22 @@ ul li {
 /* Estilos para clases */
 /* ------------------- */
 
+/* Estilo del botón para volver al inicio */
+.back-home{
+    background-color: #222222; /* Fondo negro oscuro coherente con el header */
+    border-radius: 10px; /* Bordes redondeados para un look moderno */
+    color: white; /* Texto blanco para buen contraste */
+    font-size: 16px; /* Tamaño de fuente estándar */
+    padding: 12px 30px; /* Espacio interior para un botón cómodo */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    transition: transform 0.2s ease; /* Transición suave para el efecto hover */
+}
+
+/* Efecto hover del botón volver al inicio */
+.back-home:hover{
+    transform: scale(1.2); /* Aumenta el tamaño del botón al pasar el ratón (efecto zoom) */
+}
+
 /* Estilos para las barras del menú */
 .bar {
     background-color: white; /* O el color que desees */
@@ -503,6 +519,33 @@ ul li {
 /* Estilos para el hover del enlace de volver */
 .enlace-volver:hover {
     transform: scale(1.2); /* Escala el ícono al hacer hover */
+}
+
+/* Estilo para el número grande del error 404 */
+.error-code{
+    color: #222222; /* Este es el color que está heredando el .error-code */
+    font-size: 120px; /* Tamaño grande para destacar el código de error */
+    font-weight: bold; /* Negrita para mayor impacto visual */
+    line-height: 1; /* Ajusta la altura de línea para un look compacto */
+    margin: 0; /* Elimina márgenes predeterminados */
+}
+
+/* Contenedor principal del mensaje de error */
+.error-container{
+    align-items: center; /* Centra horizontalmente los elementos hijos */
+    display: flex; /* Activa flexbox para un centrado perfecto */
+    flex-direction: column; /* Organiza los elementos en columna */
+    justify-content: center; /* Centra verticalmente los elementos hijos */
+    min-height: 70%; /* Ocupa al menos el 70% de la altura disponible */
+    padding: 40px; /* Espacio interior para evitar pegarse a los bordes */
+    text-align: center; /* Centra el texto dentro de los elementos */
+}
+
+/* Estilo para el texto descriptivo del error */
+.error-message{
+    color: #555; /* Color gris medio para un tono suave y profesional */
+    font-size: 28px; /* Tamaño legible y destacado para el mensaje */
+    margin: 20px 0 40px; /* Espacio superior/inferior para separar del 404 y del botón */
 }
 
 /* Estilos para el contenido de la experiencia */
@@ -682,8 +725,9 @@ ul li {
 
 /* Estilos para los títulos de competencias e intereses */
 .titulo-comp-intereses{
-    text-align: left
+    text-align: left /* Alinear texto a la izquierda */
 }
+
 
 
 /* ------------- */

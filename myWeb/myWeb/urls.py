@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import handler404
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -23,6 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('appWeb.urls')),
 ]
+
+# Funcion que llama a la vista de Error 404
+handler404 = 'appWeb.views.error_404_handler'
 
 # Añadir configuración para servir archivos multimedia en desarrollo
 if settings.DEBUG:
