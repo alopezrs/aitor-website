@@ -53,12 +53,12 @@ class ExperienciaListView(ListView):
         context['titulo_pagina'] = 'Trayectoria'
 
         for experiencia in context['lista_experiencia']:
-            if experiencia.mes_inicio:
+            """if experiencia.mes_inicio:
                 experiencia.mes_inicio_nombre = calendar.month_name[int(experiencia.mes_inicio)].capitalize()
 
             if experiencia.mes_fin:
                 experiencia.mes_fin_nombre = calendar.month_name[int(experiencia.mes_fin)].capitalize()
-
+"""
             if experiencia.descripcion:
                 # Divide el texto por saltos de línea y filtra puntos vacíos
                 experiencia.descripcion_lista = [

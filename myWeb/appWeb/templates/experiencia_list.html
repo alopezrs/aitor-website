@@ -13,9 +13,9 @@
                     <li>Empresa: {{ exp.empresa }}</li>
 
                     {% if exp.anio_fin %}
-                        <li>Periodo: {{ exp.mes_inicio_nombre }} {{ exp.anio_inicio }} - {{ exp.mes_fin_nombre }} {{ exp.anio_fin }}</li>
+                        <li>Periodo: {{ exp.get_mes_inicio_display  }} {{ exp.anio_inicio }} - {{ exp.get_mes_fin_display  }} {{ exp.anio_fin }}</li>
                     {% else %}
-                        <li>Periodo: {{ exp.mes_inicio_nombre }} {{ exp.anio_inicio }} - Actualidad</li>
+                        <li>Periodo: {{ exp.get_mes_inicio_display  }} {{ exp.anio_inicio }} - Actualidad</li>
                     {% endif %}
 
                     <li>Descripción:</li>
