@@ -453,25 +453,44 @@ ul li {
 
 /* Estilos para elementos de contacto */
 .contacto-item {
-    align-items: stretch; /* Centra el contenido verticalmente */
-    display: flex; /* Usa Flexbox para alinear elementos */
-    gap: 20px; /* Espacio entre los dos divs */
-    width: 100%; /* Ancho completo */
+    align-items: stretch; /* Alinea los elementos verticalmente al máximo altura */
+    display: flex; /* Activa Flexbox para alinear los hijos horizontalmente */
+    gap: 20px; /* Espacio uniforme entre los dos elementos internos */
+    width: 100%; /* Ocupa todo el ancho disponible del contenedor */
 }
 
-/* Estilos para certificados en línea */
+/* Estilos base para el enlace de certificado en línea */
 .certificado-online {
-    line-height: 1; /* Elimina espacio vertical */
-    text-decoration: none; /* Sin subrayado */
-    transition: transform 0.2s ease; /* Transición para efecto hover */
+    display: inline-block; /* Permite transform y controla el flujo inline */
+    line-height: 1; /* Elimina espacio vertical extra alrededor del texto */
+    position: relative; /* Necesario para posicionar el pseudo-elemento ::after */
+    text-decoration: none; /* Elimina el subrayado nativo del enlace */
+    transform-origin: left center; /* El crecimiento al hacer hover parte desde la izquierda */
+    transition: transform 0.2s ease; /* Transición suave para el efecto de escala */
 }
 
-/* Estilos para el hover de certificados en línea */
+/* Efecto hover para el enlace del certificado */
 .certificado-online:hover {
-    background: #3b82f6; /* Color del fondo */
-    border-radius: 7px; /* Bordes redondeados */
-    color: #ffffff; /* Texto blanco */
-    transform: scale(1.2); /* Escala el ícono al hacer hover */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del enlace al pasar el mouse */
+}
+
+/* Pseudo-elemento para el subrayado animado (estado inicial) */
+.certificado-online::after {
+    background-color: currentColor; /* El subrayado usa el mismo color que el texto */
+    border-radius: 2px; /* Bordes redondeados sutiles en los extremos del subrayado */
+    bottom: -4px; /* Distancia del subrayado respecto al texto */
+    content: ''; /* Requiere contenido vacío para que se muestre */
+    height: 1px; /* Grosor fino del subrayado */
+    left: 50%; /* Posición inicial centrada para la animación desde el centro */
+    position: absolute; /* Se posiciona respecto al elemento padre relativo */
+    transition: width 0.2s ease, left 0.2s ease; /* Animación suave al expandirse */
+    width: 0; /* Ancho inicial cero (invisible hasta hover) */
+}
+
+/* Efecto hover para el enlace del certificado, completa el subrayado animado desde el centro */
+.certificado-online:hover::after {
+    left: 0; /* Mueve el origen a la izquierda para cubrir todo */
+    width: 100%; /* Expande el subrayado al ancho completo del texto */
 }
 
 /* Estilos para el título del certificado */
