@@ -11,7 +11,7 @@
             <h3>{{ cer.titulo }}</h3>
             <ul class="lista-exp-edu">
                 <li>Emisor: {{ cer.emisor }}</li>
-                <li>Expedición: {{ cer.mes_expedicion }} {{ cer.anio_expedicion }}</li>
+                <li>Expedición: {{ cer.get_mes_expedicion_display }} {{ cer.anio_expedicion }}</li>
             </ul>
         </div>
         <!--<a class="emoji-certificado" href="{% url 'certificado_detail' cer.id %}">

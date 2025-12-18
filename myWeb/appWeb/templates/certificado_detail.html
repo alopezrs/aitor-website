@@ -9,7 +9,7 @@
 </div>
 <ul class="lista-exp-edu">
     <li>Emisor: {{ certificado.emisor }}</li>
-    <li>Expedición: {{ mes_expedicion_nombre }} {{ certificado.anio_expedicion }}</li>
+    <li>Expedición: {{ certificado.get_mes_expedicion_display }} {{ certificado.anio_expedicion }}</li>
 
     {% if certificado.id_credencial %}
         <li>ID Credencial: {{ certificado.id_credencial }}</li>

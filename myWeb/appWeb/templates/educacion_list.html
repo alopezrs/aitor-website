@@ -13,9 +13,9 @@
                     <li>Centro: {{ edu.centro }}</li>
 
                     {% if edu.anio_fin %}
-                        <li>Periodo: {{ edu.mes_inicio_nombre }} {{ edu.anio_inicio }} - {{ edu.mes_fin_nombre }} {{ edu.anio_fin }}</li>
+                        <li>Periodo: {{ edu.get_mes_inicio_display }} {{ edu.anio_inicio }} - {{ edu.get_mes_fin_display }} {{ edu.anio_fin }}</li>
                     {% else %}
-                        <li>Periodo: {{ edu.mes_inicio_nombre }} {{ edu.anio_inicio }} - Actualidad</li>
+                        <li>Periodo: {{ edu.get_mes_inicio_display }} {{ edu.anio_inicio }} - Actualidad</li>
                     {% endif %}
 
                     <li>Descripción:</li>

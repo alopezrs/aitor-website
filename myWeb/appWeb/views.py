@@ -53,12 +53,6 @@ class ExperienciaListView(ListView):
         context['titulo_pagina'] = 'Trayectoria'
 
         for experiencia in context['lista_experiencia']:
-            """if experiencia.mes_inicio:
-                experiencia.mes_inicio_nombre = calendar.month_name[int(experiencia.mes_inicio)].capitalize()
-
-            if experiencia.mes_fin:
-                experiencia.mes_fin_nombre = calendar.month_name[int(experiencia.mes_fin)].capitalize()
-"""
             if experiencia.descripcion:
                 # Divide el texto por saltos de línea y filtra puntos vacíos
                 experiencia.descripcion_lista = [
@@ -92,12 +86,6 @@ class EducacionListView(ListView):
         context['titulo_pagina'] = 'Formación'
 
         for educacion in context['lista_educacion']:
-            if educacion.mes_inicio:
-                educacion.mes_inicio_nombre = calendar.month_name[int(educacion.mes_inicio)].capitalize()
-
-            if educacion.mes_fin:
-                educacion.mes_fin_nombre = calendar.month_name[int(educacion.mes_fin)].capitalize()
-
             if educacion.descripcion:
                 # Divide el texto por saltos de línea y filtra puntos vacíos
                 educacion.descripcion_lista = [
@@ -120,10 +108,6 @@ class CertificadoListView(ListView):
         context['titulo_ventana'] = 'Certificados'
         context['titulo_pagina'] = 'Certificados'
 
-        for certificado in context['lista_certificado']:
-            if certificado.mes_expedicion:
-                certificado.mes_expedicion = calendar.month_name[int(certificado.mes_expedicion)].capitalize()
-
         return context
 
 # Vista para los Certificados detallados
@@ -141,8 +125,7 @@ class CertificadoDetailView(DetailView):
         context['titulo_ventana'] = certificado.titulo_corto
 
         # Convertir mes_inicio (asumiendo que es un número) a su nombre
-        if certificado.mes_expedicion:
-            context['mes_expedicion_nombre'] = calendar.month_name[int(certificado.mes_expedicion)].capitalize()
+        context['mes_expedicion_nombre'] = certificado.get_mes_expedicion_display()
 
         if certificado.descripcion:
             # Divide el texto por saltos de línea y filtra puntos vacíos
