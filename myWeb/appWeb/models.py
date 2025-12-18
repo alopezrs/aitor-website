@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 import datetime
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -31,7 +32,8 @@ ARCHIVO_CHOICES = [('Curriculum', 'Curriculum'), ('Vida Laboral', 'Vida Laboral'
 
 
 class Experiencia(models.Model):
-    imagen = models.ImageField(upload_to='experiencia/', blank=True, null=True)
+    #imagen = models.ImageField(upload_to='experiencia/', blank=True, null=True)
+    imagen = CloudinaryField('image', folder='MyWeb/experiencia', blank=True, null=True)
     puesto = models.CharField(max_length=200)
     empresa = models.CharField(max_length=200)
     # Campo para almacenar el mes como texto
@@ -55,7 +57,8 @@ class Experiencia(models.Model):
 
 
 class Educacion(models.Model):
-    imagen = models.ImageField(upload_to='educacion/', blank=True, null=True)
+    #imagen = models.ImageField(upload_to='educacion/', blank=True, null=True)
+    imagen = CloudinaryField('image', folder='MyWeb/educacion', blank=True, null=True)
     titulo = models.CharField(max_length=200)
     centro = models.CharField(max_length=200)
     # Campo para almacenar el mes como texto
@@ -87,7 +90,8 @@ class Certificado(models.Model):
     anio_expedicion = models.CharField(max_length=4, choices=ANIO_CHOICES)
     id_credencial = models.CharField(max_length=200, blank=True, null=True)
     url = models.URLField(blank=True, null=True)
-    imagen = models.ImageField(upload_to='certificados/', blank=True, null=True)
+    #imagen = models.ImageField(upload_to='certificados/', blank=True, null=True)
+    imagen = CloudinaryField('image', folder='MyWeb/certificados', blank=True, null=True)
     descripcion = models.TextField(blank=True, null=True)
 
     def __str__(self):

@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cloudinary',
-    'cloudinary_storage',
     'appWeb',
 ]
 
@@ -151,22 +150,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
-# Usa Cloudinary para todos los archivos subidos
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
 import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import os
 
+# En Test los valores los coge desde la variabes de entorno de Windows
+# En Produccion los valores los coge desde las variables de entorno de Render
 cloudinary.config(
     cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
     api_key=os.environ.get("CLOUDINARY_API_KEY"),
     api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
 )
 
-# Configuración específica de django-cloudinary-storage
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    'API_KEY': os.environ.get("CLOUDINARY_API_KEY"),
-    'API_SECRET': os.environ.get("CLOUDINARY_API_SECRET"),
-    'FOLDER': 'MyWeb',  # Carpeta para esta app
-}
